@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:SmartUro"
+             x:Class="SmartUro.Views.ColorPickerView">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="50,0">
+            <Frame
+                x:Name="SelectedColorDisplayFrame"
+                BackgroundColor="{Binding ColorPicked, Mode=TwoWay}"
+                HeightRequest="70"
+                HorizontalOptions="FillAndExpand"                
+                Padding="1">
+                <Label
+                    x:Name="SelectedColorValueLabel"
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center" 
+                    Text="#COLOR"
+                    TextColor="SlateGray"
+                />
+            </Frame>
+            <Frame
+                x:Name="ColorPickerFrame"
+                HeightRequest="300"                
+                HorizontalOptions="FillAndExpand"
+                Padding="1"
+                BackgroundColor="Black">
+                <controls:ColorPickerControl
+                    x:Name="ColorPicker"
+                    PickedColorChanged="ColorPicker_PickedColorChanged" />
+            </Frame>
+            <StackLayout Orientation="Horizontal">
+                <Button
+                    Text="SAVE"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"
+                    Margin="10"
+                    Command="{Binding SaveColorCommand}"                    
+                />
+                <Button
+                    Text="CANCEL"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="CadetBlue"
+                    TextColor="White"
+                    Margin="10"
+                    Command="{Binding CancelCommand}"
+                />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

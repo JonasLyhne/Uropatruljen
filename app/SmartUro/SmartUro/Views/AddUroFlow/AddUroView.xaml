@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:imageExtension="clr-namespace:SmartUro.Extensions;assembly=SmartUro"
+             xmlns:local="clr-namespace:SmartUro.ViewModels"
+             x:Class="SmartUro.Views.AddUroView">
+    <ContentPage.BindingContext>
+        <local:AddUroViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="20,0" Orientation="Vertical">
+            
+            <!-- User instructions -->
+            <Label 
+                Text="Ensure your smart-device is in &quot;pairing mode&quot;, this can be observed by rapid blinking lights on the device. Now locate your smart-device and look for the sticker with the serial-number on it. (For DEBUG use &quot;abc&quot;)"
+                Margin="0,30"
+            />
+
+            <StackLayout Orientation="Horizontal" Margin="0,30">
+                <Entry 
+                    HorizontalOptions="FillAndExpand"
+                    IsPassword="False"
+                    Placeholder="Please input smart-device serial number."
+                    Text="{Binding SerialNumberInput, Mode=TwoWay}"
+                />
+                <ImageButton
+                    Style="{StaticResource IconPNG}"
+                    Source="{imageExtension:ImageResource SmartUro.Resources.simple-eye.png}"
+                />
+            </StackLayout>
+
+            <Button
+                Text="Pair Device"
+                TextColor="White"                
+                BackgroundColor="DarkBlue"
+                HorizontalOptions="Center"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

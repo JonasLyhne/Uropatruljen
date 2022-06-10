@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:colortest="clr-namespace:SmartUro"
+             xmlns:converters="clr-namespace:SmartUro.Converters;assembly=SmartUro"
+             x:Class="SmartUro.App">
+    <Application.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="DarkBlue"></Setter>
+            <Setter Property="BarTextColor" Value="White"></Setter>
+        </Style>
+        <Style x:Key="IconPNG" TargetType="ImageButton">
+            <Setter Property="WidthRequest" Value="40"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="BackgroundColor" Value="#00000000"/>
+        </Style>
+        <Style x:Key="NavbarLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+        <converters:IsZeroConverter x:Key="IsZeroConverter"/>
+        <converters:IsNotZeroConverter x:Key="IsNotZeroConverter"/>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" 
+                        x:Key="FontAwesomeBrands">
+                <On Platform="Android" 
+                    Value="FA6BRANDSREGULAR" />
+                <On Platform="iOS" 
+                    Value="FA6BRANDREGULAR" />
+            </OnPlatform> 
+    
+            <OnPlatform x:TypeArguments="x:String" 
+                        x:Key="FontAwesomeSolid"> 
+                <On Platform="Android" 
+                    Value="FA6SOLID" /> 
+                <On Platform="iOS" 
+                    Value="FA6SOLID" /> 
+            </OnPlatform> 
+    
+            <OnPlatform x:TypeArguments="x:String" 
+                        x:Key="FontAwesomeRegular">
+                <On Platform="Android" 
+                    Value="FA6REGULAR" /> 
+                <On Platform="iOS" 
+                    Value="FA6REGULAR" /> 
+            </OnPlatform>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:imageExtension="clr-namespace:SmartUro.Extensions;assembly=SmartUro"
+             x:Class="SmartUro.Views.AddUroFlow.SelectUserWiFi"
+             xmlns:local="clr-namespace:SmartUro.ViewModels">    
+    
+    <ContentPage.Content>
+        <StackLayout Margin="20,0" Orientation="Vertical">
+            
+            <!-- User instructions -->
+            <Label 
+                Text="Please make sure your phone/tablet is connected to your home WiFi. The home WiFi must be on the 2.4 GHz spectrum."
+                Margin="0,30"
+            />
+            <Label
+                Text="WIFI STATUS (RED = DC, GREEN = ON, BLUE = ??)"
+                TextColor="White"
+                BackgroundColor="{Binding WifiColorIndicator}"
+                Padding="10,10"
+            />
+            
+            <!-- Connected home network/WiFi -->
+            <StackLayout Orientation="Horizontal" Margin="0,10">
+                <Image
+                    Style="{StaticResource IconPNG}"
+                    Source="{imageExtension:ImageResource SmartUro.Resources.wifi.png}"
+                />
+                <Entry
+                    IsReadOnly="True"
+                    Placeholder="Local WiFi"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding ConnectedWiFiName}"
+                />
+                <ImageButton
+                    Style="{StaticResource IconPNG}"
+                    Source="{imageExtension:ImageResource SmartUro.Resources.cogwheel.png}"
+                    Command="{Binding OpenSettingsCommand}"
+                />
+            </StackLayout>
+            
+            <!-- Password for the WiFi the phone is connected to. -->
+            <StackLayout Orientation="Horizontal" Margin="0,10">
+                <Image
+                    Style="{StaticResource IconPNG}"
+                    Source="{imageExtension:ImageResource SmartUro.Resources.lock.png}"
+                />
+                <Entry 
+                    IsPassword="True"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Your home wifi password here..."
+                    Text="{Binding WiFiPasswordInput, Mode=TwoWay}"
+                />
+                <ImageButton
+                    Style="{StaticResource IconPNG}"
+                    Source="{imageExtension:ImageResource SmartUro.Resources.simple-eye.png}"
+                />
+            </StackLayout>
+            
+            <!-- Button to continue when conditions are ideal -->
+            <Button 
+                Text="Continue"
+                TextColor="White"
+                BackgroundColor="DarkBlue"
+                HorizontalOptions="Center"
+                Command="{Binding ContinueCommand}"
+                CommandParameter="{Binding WiFiPasswordInput}"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

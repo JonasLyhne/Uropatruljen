@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SmartUro.ViewModels;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace SmartUro.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RegisterUserView : ContentPage
+    {
+        public RegisterUserView()
+        {
+            InitializeComponent();
+            this.BindingContext = App.GetViewModel<RegisterUserViewModel>();
+        }
+    }
+}

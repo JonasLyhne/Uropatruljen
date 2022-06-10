@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartUro.Views.RegisterUserView"
+             xmlns:local="clr-namespace:SmartUro.ViewModels;assembly=SmartUro"
+             >
+    
+    <!--<ContentPage.BindingContext>
+        <local:RegisterUserViewModel/>
+    </ContentPage.BindingContext>-->
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="10">
+            
+            <Label Text="Your name"/>
+            <Entry 
+                Text="{Binding DesiredName}"
+                Placeholder="Enter name..."
+                
+                />
+            
+            <Label Text="Your e-mail address"/>
+            <Entry 
+                Text="{Binding DesiredEmail}"
+                Placeholder="someone@example.com"/>
+            
+            <Label Text="Your desired password"/>
+            <Entry Text="{Binding DesiredPassword}" IsPassword="True"/>
+            
+            <Label Text="Confirm password"/>
+            <Entry Text="{Binding ConfirmDesiredPassword}" IsPassword="True"/>
+            
+            <!-- TODO: Figure out how the button should look when it is disabled. -->
+            <Button 
+                Text="Register"
+                Command="{Binding RegisterUserCommand}"
+                BackgroundColor="Blue"
+                TextColor="White"
+                IsEnabled="{Binding IsFormValid}">
+                <Button.Triggers>
+                    <Trigger TargetType="Button" Property="IsEnabled" Value="false">
+                        <Setter Property="BackgroundColor" Value="LightGray"/>
+                    </Trigger>
+                    <Trigger TargetType="Button" Property="IsEnabled" Value="true">
+                        <Setter Property="BackgroundColor" Value="DarkBlue"/>
+                    </Trigger>
+                </Button.Triggers>
+            </Button>
+            
+            <StackLayout Orientation="Vertical" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator
+                    IsRunning="True"
+                    IsVisible="True"
+                    Color="Blue"
+                    Margin="0,15,0,0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="Please wait working on it..."
+                    HorizontalOptions="Center"
+                />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

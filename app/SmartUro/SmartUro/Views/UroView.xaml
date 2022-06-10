@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartUro.Views.UroView"
+             x:Name="Page"
+             xmlns:local="clr-namespace:SmartUro.ViewModels"
+>
+    
+    
+    <!--x:DataType="local:UroViewModel"-->
+    
+    <NavigationPage.TitleView>
+        <Label
+            Text="{Binding Device.Name}"
+            Style="{StaticResource NavbarLabel}"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="Center"
+        />
+        
+    </NavigationPage.TitleView>
+    
+    <!--<NavigationPage.TitleView>
+        <Label
+            Text="Manage Device"
+            HorizontalTextAlignment="Start"
+            HorizontalOptions="Start"
+            TextColor="White"
+            FontSize="18"
+        />
+    </NavigationPage.TitleView>-->
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Label 
+                    Text="{Binding HardwareLayout.ProductName}" 
+                    HorizontalTextAlignment="Center" 
+                    TextColor="Black" 
+                    FontSize="30"/>-->
+
+            <ListView ItemsSource="{Binding Device.HardwareLayout.Components}" Margin="40,20,40,0" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" FontSize="20"/>
+                                    <Label Text="{Binding Type}" FontSize="14" FontAttributes="Italic"/>
+                                </StackLayout>
+                                <Button
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    VerticalOptions="Center"
+                                    Margin="10,0"
+                                    BackgroundColor="{Binding BindingContext.DiodeColor, Source={x:Reference Page}}"
+                                    Command="{Binding BindingContext.GoToColorPickerCommand, Source={x:Reference Page}}"
+                                    CommandParameter="{Binding .}">
+                                </Button>
+                                <Button 
+                                    Text="{Binding BindingContext.ButtonText, Source={x:Reference Page}}"
+                                    TextColor="White"
+                                    WidthRequest="50"
+                                    HeightRequest="50"
+                                    CornerRadius="25"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="EndAndExpand" 
+                                    BackgroundColor="{Binding BindingContext.ButtonColor, Source={x:Reference Page}}"
+                                    Command="{Binding BindingContext.ToggleStateCommand, Source={x:Reference Page}}"
+                                    CommandParameter="{Binding .}"
+                                    >
+                                </Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
